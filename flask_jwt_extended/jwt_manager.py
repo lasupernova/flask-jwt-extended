@@ -141,11 +141,11 @@ class JWTManager(object):
 
         @app.errorhandler(RevokedTokenError)
         def handle_revoked_token_error(e):
-            return self._revoked_token_callback()
+            return self._revoked_token_callback(e)
 
         @app.errorhandler(FreshTokenRequired)
         def handle_fresh_token_required(e):
-            return self._needs_fresh_token_callback()
+            return self._needs_fresh_token_callback(e)
 
         @app.errorhandler(UserLoadError)
         def handler_user_load_error(e):
